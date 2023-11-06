@@ -2,7 +2,7 @@ import BlogCard from "@/components/cards/BlogCard";
 import { notFound } from "next/navigation";
 
 async function getData(id) {
-  const api = process.env.API_URL;
+  const api = process.env.NEXT_PUBLIC_VERCEL_URL;
   const res = await fetch(`${api}/api/posts/${id}`, {
     cache: "no-store",
   });
