@@ -1,7 +1,8 @@
 import BlogCard from "@/components/cards/BlogCard";
 
 async function getData() {
-  const res = await fetch("/api/posts", {
+  const api = process.env.API_URL;
+  const res = await fetch(`${api}/api/posts`, {
     cache: "no-store",
   });
 
