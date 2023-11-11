@@ -1,18 +1,22 @@
 import BlogCard from "@/components/cards/BlogCard";
+import { BASE_URL } from "@/utils/constants/constants";
 
-async function getData() {
-  const api = process.env.NEXT_PUBLIC_VERCEL_URL;
-  const res = await fetch(`http://${api}/api/posts`, {
-    cache: "no-store",
+const getData = async () => {
+  const res = await fetch(`${BASE_URL}/api/posts`, {
+    next: { revalidate: 0 },
   });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
   return res.json();
-}
+};
 
 const Blog = async () => {
+  if (!BASE_URL) {
+    return null;
+  }
+
   const data = await getData();
   return (
     <div>
