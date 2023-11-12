@@ -3,7 +3,7 @@ import { BASE_URL } from "@/utils/constants/constants";
 import { notFound } from "next/navigation";
 
 const getData = async (id) => {
-  const res = await fetch(`${BASE_URL}/api/posts`, {
+  const res = await fetch(`${BASE_URL}/api/posts/${id}`, {
     next: { revalidate: 0 },
   });
 
