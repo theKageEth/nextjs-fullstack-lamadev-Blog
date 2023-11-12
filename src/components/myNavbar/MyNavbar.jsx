@@ -18,6 +18,11 @@ import {
 
 const MyNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuChange = (isOpen) => {
+    setIsMenuOpen(isOpen);
+  };
+
   const session = useSession();
 
   return (
@@ -58,21 +63,13 @@ const MyNavbar = () => {
             Home
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link as={NextLink} color="foreground" href="/portfolio">
-            Portfolio
-          </Link>
-        </NavbarItem>
+
         <NavbarItem>
           <Link as={NextLink} color="foreground" href="/blog">
             Blog
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link as={NextLink} color="foreground" href="/about">
-            About
-          </Link>
-        </NavbarItem>
+
         <NavbarItem>
           <Link as={NextLink} isBlock color="warning" href="/contact">
             Contact
@@ -97,17 +94,34 @@ const MyNavbar = () => {
 
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link as={NextLink} color="foreground" href="/portfolio">
-            Portfolio
+          <Link
+            as={NextLink}
+            color="foreground"
+            href="/blog"
+            onClick={() => handleMenuChange(false)}
+          >
+            Blog
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link as={NextLink} isBlock color="warning" href="/contact">
-            Contact
+          <Link
+            as={NextLink}
+            isBlock
+            color="success"
+            href="/dashboard/login"
+            onClick={() => handleMenuChange(false)}
+          >
+            Login
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link as={NextLink} isBlock color="success" href="/dashboard">
+          <Link
+            as={NextLink}
+            isBlock
+            color="warning"
+            href="/dashboard"
+            onClick={() => handleMenuChange(false)}
+          >
             Dashboard
           </Link>
         </NavbarMenuItem>
